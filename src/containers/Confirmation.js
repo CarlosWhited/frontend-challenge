@@ -1,10 +1,11 @@
 import useAxios from "axios-hooks";
+import { useNavigate } from 'react-router-dom';
 import Component from "../components/Confirmation";
-import withRouter from '../utils/withRouter';
 
 // TODO: pull API server url from node env
 
-const Confirmation = props => {
+const Confirmation = () => {
+  const navigate = useNavigate();
   const [
     { data, loading, error },
     submitForm
@@ -22,9 +23,9 @@ const Confirmation = props => {
     });
 
     if (response.status === 200) {
-      props.history.push("../screens/Success");
+      navigate('../success');
     } else {
-      props.history.push("../screens/Error");
+      navigate('../error');
     }
   }
 
@@ -32,8 +33,8 @@ const Confirmation = props => {
   if (error) return <p>Error!</p>
 
   return (
-    <Component submit={submit} {...props} />
+    <Component submit={submit} />
   );
 };
 
-export default withRouter(Confirmation);
+export default Confirmation;

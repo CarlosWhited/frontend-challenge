@@ -5,15 +5,17 @@ import {
   Button,
   Box,
 } from "@mui/material";
-import updateAction from "../../actions/updateAction";
-import withRouter from '../../utils/withRouter';
+import { useNavigate } from 'react-router-dom';
+import { update } from "../../actions/SignUpFlow";
 
-const SignUp = props => {
+const SignUp = () => {
   const { register, handleSubmit } = useForm();
-  const { actions } = useStateMachine({ updateAction });
+  const { actions, state } = useStateMachine({ update });
+  const navigate = useNavigate();
+
   const onSubmit = data => {
-    actions.updateAction(data);
-    props.history.push("../../screens/MoreInfo");
+    actions.update(data);
+    navigate('more-info');
   };
 
   return (
@@ -30,12 +32,14 @@ const SignUp = props => {
           required
           id="first-name"
           label="First Name"
+          // value={state.name}
           {...register("name")} 
         />
         <TextField
           required
           id="email"
           label="E-mail"
+          // value={state.email}
           {...register("email")} 
         />
         <TextField
@@ -43,6 +47,7 @@ const SignUp = props => {
           label="Password"
           type="password"
           autoComplete="current-password"
+          // value={state.password}
           {...register("password")} 
         />
         <Button variant="contained" color="success" type="submit">
@@ -53,4 +58,4 @@ const SignUp = props => {
   );
 };
 
-export default withRouter(SignUp);
+export default SignUp;

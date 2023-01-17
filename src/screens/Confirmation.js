@@ -1,10 +1,10 @@
 import Container from "../containers/Confirmation";
 
-const Confirmation = props => {
+const Confirmation = () => {
   return (
     <>
       <h1>Confirmation</h1>
-      <Container {...props} />
+      <Container />
     </>
   );
 };

@@ -9,13 +9,11 @@ import Error from "./screens/Error";
 import Layout from "./screens/Layout";
 
 createStore({
-  data: {
-    name: '',
-    email: '',
-    password: '', // this should be hashed somehow (not gonna do it now ofc)
-    color: '',
-    terms: false,
-  }
+  name: '',
+  email: '',
+  password: '', // this should be hashed somehow (not gonna do it now ofc)
+  color: '',
+  terms: false,
 });
 
 class App extends Component {
@@ -26,10 +24,6 @@ class App extends Component {
           <meta name="viewport" content="initial-scale=1, width=device-width" />
         </head>
 
-        {/* Routes nest inside one another. Nested route paths build upon
-        parent route paths, and nested route elements render inside
-        parent route elements. See the note about <Outlet> below. */}
-        {/* I don't think this needs an initial value? */}
         <StateMachineProvider>
           <Routes>
             <Route path="/" element={<Layout />}>

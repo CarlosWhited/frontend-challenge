@@ -6,15 +6,23 @@ import {
   Divider,
   ListItemText,
   Box,
+  Button,
 } from "@mui/material";
-import withRouter from '../../utils/withRouter';
+import { useNavigate } from 'react-router-dom';
+import PropTypes from 'prop-types';
 
-// TODO: Define prop types for the colors prop
+const propTypes = {
+  submit: PropTypes.func.isRequired,
+};
 
-const Confirmation = props => {
+const Confirmation = (props) => {
   const { submit } = props;
   const { handleSubmit } = useForm();
   const { state } = useStateMachine();
+  const navigate = useNavigate();
+
+  const navBack = () => navigate(-1);
+
   const onSubmit = () => {
     submit(state);
   };
@@ -51,6 +59,9 @@ const Confirmation = props => {
           </ListItem>
         </List>
 
+        <Button variant="contained" color="primary" onClick={navBack}>
+          Back
+        </Button>
         <Button variant="contained" color="primary" type="submit">
           Submit
         </Button>
@@ -59,4 +70,6 @@ const Confirmation = props => {
   );
 };
 
-export default withRouter(Confirmation);
+Confirmation.propTypes = propTypes;
+
+export default Confirmation;

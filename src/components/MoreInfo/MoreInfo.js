@@ -8,26 +8,40 @@ import {
   Box,
   InputLabel,
   Select,
+  MenuItem,
+  Button,
 } from "@mui/material";
-import updateAction from "../../actions/updateAction";
-import withRouter from '../../utils/withRouter';
+import { useNavigate } from 'react-router-dom';
+import PropTypes from 'prop-types';
+import { update} from "../../actions/SignUpFlow";
 
 // TODO: Define prop types for the colors prop
+const propTypes = {
+  colors: PropTypes.arrayOf(PropTypes.string).isRequired,
+};
 
-const MoreInfo = props => {
+const MoreInfo = (props) => {
   const { colors } = props;
   const { register, handleSubmit } = useForm();
-  const { actions } = useStateMachine({ updateAction });
+  const { actions, state } = useStateMachine({ update });
+  const navigate = useNavigate();
+
   const onSubmit = data => {
-    actions.updateAction(data);
-    props.history.push("../../screens/Confirmation");
+    actions.update(data);
+    navigate("../confirmation");
   };
+
+  const navBack = () => navigate(-1);
 
   const renderColorSelect = () => colors.map((color, index) => 
     <MenuItem key={index} value={color}>
       {color}
     </MenuItem>
   );
+
+  const renderTermsLink = () => <>
+    <span>I agree to the <a href="https://www.google.com" target="_blank">terms and conditions</a></span>
+  </>;
 
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
@@ -44,24 +58,28 @@ const MoreInfo = props => {
           <Select
             labelId="demo-simple-select-label"
             id="demo-simple-select"
-            value={age}
-            label="Age"
-            onChange={handleChange}
-            {...register("color")} 
+            label="What is your favorite color?"
+            // value={state.color}
+            {...register("color")}
           >
             {renderColorSelect()}
           </Select>
         </FormControl>
         <FormGroup>
-          <FormControlLabel control={<Checkbox {...register("terms")}  />} label={`I agree to the ${<a>terms and conditions</a>}`} />
+          <FormControlLabel control={<Checkbox {...register("terms")} />} label={renderTermsLink()} />
         </FormGroup>
 
-        <Button variant="contained" color="success" type="submit">
-          Success
+        <Button variant="contained" color="primary" onClick={navBack}>
+          Back
+        </Button>
+        <Button variant="contained" color="primary" type="submit">
+          Next
         </Button>
       </Box>
     </form>
   );
 };
 
-export default withRouter(MoreInfo);
+MoreInfo.propTypes = propTypes;
+
+export default MoreInfo;

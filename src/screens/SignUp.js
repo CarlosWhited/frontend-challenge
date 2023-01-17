@@ -1,10 +1,10 @@
 import Component from "../components/SignUp";
 
-const SignUp = props => {
+const SignUp = () => {
   return (
     <>
       <h1>Sign Up</h1>
-      <Component {...props} />
+      <Component />
     </>
   );
 };
