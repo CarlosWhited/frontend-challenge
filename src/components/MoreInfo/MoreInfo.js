@@ -10,12 +10,12 @@ import {
   Select,
   MenuItem,
   Button,
+  Container,
 } from "@mui/material";
 import { useNavigate } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { update} from "../../actions/SignUpFlow";
 
-// TODO: Define prop types for the colors prop
 const propTypes = {
   colors: PropTypes.arrayOf(PropTypes.string).isRequired,
 };
@@ -47,34 +47,37 @@ const MoreInfo = (props) => {
     <form onSubmit={handleSubmit(onSubmit)}>
       <Box
         component="form"
-        sx={{
-          '& > :not(style)': { m: 1, width: '25ch' },
-        }}
         noValidate
         autoComplete="off"
       >
-        <FormControl fullWidth>
-          <InputLabel id="demo-simple-select-label">Select your favorite color</InputLabel>
-          <Select
-            labelId="demo-simple-select-label"
-            id="demo-simple-select"
-            label="What is your favorite color?"
-            // value={state.color}
-            {...register("color")}
-          >
-            {renderColorSelect()}
-          </Select>
-        </FormControl>
-        <FormGroup>
-          <FormControlLabel control={<Checkbox {...register("terms")} />} label={renderTermsLink()} />
-        </FormGroup>
+        <Container>
+          <FormControl sx={{ width: 1, margin: 2 }}>
+            <InputLabel id="demo-simple-select-label">Select your favorite color</InputLabel>
+            <Select
+              labelId="demo-simple-select-label"
+              id="demo-simple-select"
+              label="What is your favorite color?"
+              // value={state.color}
+              {...register("color")}
+            >
+              {renderColorSelect()}
+            </Select>
+          </FormControl>
+        </Container>
+        <Container>
+          <FormGroup sx={{ width: 1, margin: 2 }}>
+            <FormControlLabel control={<Checkbox {...register("terms")} />} label={renderTermsLink()} />
+          </FormGroup>
+        </Container>
 
-        <Button variant="contained" color="primary" onClick={navBack}>
-          Back
-        </Button>
-        <Button variant="contained" color="primary" type="submit">
-          Next
-        </Button>
+        <Container>
+          <Button variant="contained" color="success" onClick={navBack} sx={{ mr: 1, ml: 2 }}>
+            Back
+          </Button>
+          <Button variant="contained" color="success" type="submit" sx={{ ml: 1 }}>
+            Next
+          </Button>
+        </Container>
       </Box>
     </form>
   );

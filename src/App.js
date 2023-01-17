@@ -1,12 +1,15 @@
 import React, { Component } from "react";
 import { Routes, Route } from "react-router-dom";
 import { StateMachineProvider, createStore } from "little-state-machine";
+import { Helmet } from "react-helmet";
 import SignUp from "./screens/SignUp";
 import MoreInfo from "./screens/MoreInfo";
 import Confirmation from "./screens/Confirmation";
 import Success from "./screens/Success";
 import Error from "./screens/Error";
 import Layout from "./screens/Layout";
+
+import "./App.css";
 
 createStore({
   name: '',
@@ -19,10 +22,11 @@ createStore({
 class App extends Component {
   render() {
     return (
-      <>
-        <head>
+      <div className='app'>
+        <Helmet>
+          <title>Upgrade Frontend Challenge</title>
           <meta name="viewport" content="initial-scale=1, width=device-width" />
-        </head>
+        </Helmet>
 
         <StateMachineProvider>
           <Routes>
@@ -38,7 +42,7 @@ class App extends Component {
             </Route>
           </Routes>
         </StateMachineProvider>
-      </>
+      </div>
     );
   }
 }

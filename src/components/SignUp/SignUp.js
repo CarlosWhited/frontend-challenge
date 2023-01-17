@@ -4,6 +4,7 @@ import {
   TextField,
   Button,
   Box,
+  Container,
 } from "@mui/material";
 import { useNavigate } from 'react-router-dom';
 import { update } from "../../actions/SignUpFlow";
@@ -22,37 +23,53 @@ const SignUp = () => {
     <form onSubmit={handleSubmit(onSubmit)}>
       <Box
         component="form"
-        sx={{
-          '& > :not(style)': { m: 1, width: '25ch' },
-        }}
         noValidate
         autoComplete="off"
       >
-        <TextField
-          required
-          id="first-name"
-          label="First Name"
-          // value={state.name}
-          {...register("name")} 
-        />
-        <TextField
-          required
-          id="email"
-          label="E-mail"
-          // value={state.email}
-          {...register("email")} 
-        />
-        <TextField
-          id="password"
-          label="Password"
-          type="password"
-          autoComplete="current-password"
-          // value={state.password}
-          {...register("password")} 
-        />
-        <Button variant="contained" color="success" type="submit">
-          Next
-        </Button>
+        <Container>
+          <TextField
+            required
+            id="first-name"
+            label="First Name"
+            sx={{
+              width: 1,
+              margin: 2,
+            }}
+            // value={state.name}
+            {...register("name")} 
+          />
+        </Container>
+        <Container>
+          <TextField
+            required
+            id="email"
+            label="E-mail"
+            sx={{
+              width: 1,
+              margin: 2,
+            }}
+            // value={state.email}
+            {...register("email")} 
+          />
+        </Container>
+        <Container>
+          <TextField
+            id="password"
+            label="Password"
+            type="password"
+            sx={{
+              width: 1,
+              margin: 2,
+            }}
+            // value={state.password}
+            {...register("password")} 
+          />
+        </Container>
+        <Container>
+          <Button variant="contained" color="success" type="submit" sx={{ margin: 2 }}>
+            Next
+          </Button>
+        </Container>
       </Box>
     </form>
   );

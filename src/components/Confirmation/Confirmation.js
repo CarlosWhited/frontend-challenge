@@ -7,6 +7,7 @@ import {
   ListItemText,
   Box,
   Button,
+  Container
 } from "@mui/material";
 import { useNavigate } from 'react-router-dom';
 import PropTypes from 'prop-types';
@@ -31,9 +32,6 @@ const Confirmation = (props) => {
     <form onSubmit={handleSubmit(onSubmit)}>
       <Box
         component="form"
-        sx={{
-          '& > :not(style)': { m: 1, width: '25ch' },
-        }}
         noValidate
         autoComplete="off"
       >
@@ -59,12 +57,14 @@ const Confirmation = (props) => {
           </ListItem>
         </List>
 
-        <Button variant="contained" color="primary" onClick={navBack}>
-          Back
-        </Button>
-        <Button variant="contained" color="primary" type="submit">
-          Submit
-        </Button>
+        <Container>
+          <Button variant="contained" color="success" onClick={navBack} sx={{ mr: 1, ml: 2 }}>
+            Back
+          </Button>
+          <Button variant="contained" color="success" type="submit" sx={{ ml: 1 }}>
+            Submit
+          </Button>
+        </Container>
       </Box>
     </form>
   );

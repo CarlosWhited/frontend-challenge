@@ -4,6 +4,7 @@ import {
 } from '@mui/material';
 import { useStateMachine } from "little-state-machine";
 import { reset } from '../actions/SignUpFlow';
+import PageHeader from '../components/PageHeader';
 
 const Error = () => {
   const navigate = useNavigate();
@@ -16,7 +17,7 @@ const Error = () => {
 
   return (
     <>
-      <h1>Error</h1>
+      <PageHeader title="Error"/>
       <p>Uh oh, something went wrong. Please try again later.</p>
       <Button variant="contained" color="success" onClick={restartFlow}>
         Restart

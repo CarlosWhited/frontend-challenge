@@ -1,9 +1,10 @@
 import Component from "../components/SignUp";
+import PageHeader from "../components/PageHeader";
 
 const SignUp = () => {
   return (
     <>
-      <h1>Sign Up</h1>
+      <PageHeader title="Sign Up"/>
       <Component />
     </>
   );

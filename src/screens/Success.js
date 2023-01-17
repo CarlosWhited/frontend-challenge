@@ -4,6 +4,7 @@ import {
 } from '@mui/material';
 import { useStateMachine } from "little-state-machine";
 import { reset } from '../actions/SignUpFlow';
+import PageHeader from '../components/PageHeader';
 
 const Success = () => {
   const navigate = useNavigate();
@@ -16,7 +17,7 @@ const Success = () => {
 
   return (
     <>
-      <h1>Success!</h1>
+      <PageHeader title="Success"/>
       <p>You should receive a confirmation email soon.</p>
       <Button variant="contained" color="success" onClick={restartFlow}>
         Restart

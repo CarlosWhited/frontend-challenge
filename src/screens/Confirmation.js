@@ -1,9 +1,10 @@
 import Container from "../containers/Confirmation";
+import PageHeader from "../components/PageHeader";
 
 const Confirmation = () => {
   return (
     <>
-      <h1>Confirmation</h1>
+    <PageHeader title="Confirmation" />
       <Container />
     </>
   );

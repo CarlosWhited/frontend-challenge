@@ -1,11 +1,12 @@
 import Container from "../containers/MoreInfo";
+import PageHeader from "../components/PageHeader";
 
 // TODO: Define prop types for the colors prop
 
 const MoreInfo = () => {
   return (
     <>
-      <h1>Additional Info</h1>
+      <PageHeader title="Additional Info" />
       <Container />
     </>
   );
