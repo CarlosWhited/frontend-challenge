@@ -16,6 +16,16 @@ npm start
 
 For my solution to this front-end challenge, I mainly focused on creating a clean, ubiquitous style for the user experience with a simple, straightforward application structure. To achieve this, I used Material UI, `react-hook-form`, and `react-router` to do a lot of the heavy lifting when it came to the UI and form behavior. I also used `little-state-machine` for lightweight state management, `axios` for API interactions, and `yup` for all the form validation. These packages all gave me the benefit of requiring little to no set up or configuration, which meant that I could easily integrate them into this application and quickly build a prototype with them. 
 
+App Structure:
+  - `/screens`
+    - Entry points for all the routes
+  - `/containers`
+    - Parent components for any components that require any kinds of API interactions, such as data fetching or requests
+  - `/components` 
+  - `/actions`
+    - Where actions for interacting with the `little-state-machine` store are kept
+  - `/hooks`
+
 Some features that I would have fleshed out given more time:
 
 - Unit testing
