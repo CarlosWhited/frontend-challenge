@@ -43,3 +43,4 @@ I had plans to specifically unit test the `MoreInfo.js` container/component sinc
 - Ensuring that the Additional Info page submits successfully when all the fields are set
 - Ensuring that the user can navigate back to the previous page
 
+I also would have tested the `Confirmation.js` container/component with similar flows, except focusing on performing the request and how the container responds to the response.
