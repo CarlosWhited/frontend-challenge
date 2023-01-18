@@ -35,15 +35,11 @@ const SignUp = () => {
       >
         <Container>
           <TextField
-            required
             error={!!errors.name}
             helperText={errors.name ? errors.name.message : ''}
             id="first-name"
             label="First Name"
-            sx={{
-              width: 1,
-              margin: 2,
-            }}
+            sx={{ width: 1, mt: 2, mb: 1 }}
             aria-invalid={errors.name ? 'true' : 'false'}
             defaultValue={state.name}
             {...register("name")} 
@@ -51,15 +47,11 @@ const SignUp = () => {
         </Container>
         <Container>
           <TextField
-            required
             error={!!errors.email}
             helperText={errors.email ? errors.email.message : ''}
             id="email"
             label="E-mail"
-            sx={{
-              width: 1,
-              margin: 2,
-            }}
+            sx={{ width: 1, mt: 1, mb: 1 }}
             aria-invalid={errors.email ? 'true' : 'false'}
             defaultValue={state.email}
             {...register("email")} 
@@ -67,23 +59,19 @@ const SignUp = () => {
         </Container>
         <Container>
           <TextField
-            required
             error={!!errors.password}
             helperText={errors.password ? errors.password.message : ''}
             id="password"
             label="Password"
             type="password"
-            sx={{
-              width: 1,
-              margin: 2,
-            }}
+            sx={{ width: 1, mt: 1, mb: 2 }}
             aria-invalid={errors.password ? 'true' : 'false'}
             defaultValue={state.password}
             {...register("password")} 
           />
         </Container>
         <Container>
-          <Button variant="contained" color="success" type="submit" sx={{ margin: 2 }}>
+          <Button variant="contained" color="success" type="submit" sx={{ mt: 1 }}>
             Next
           </Button>
         </Container>

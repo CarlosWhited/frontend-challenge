@@ -14,7 +14,7 @@ import "./App.css";
 createStore({
   name: '',
   email: '',
-  password: '', // this should be hashed somehow (not gonna do it now ofc)
+  password: '', // this would ideally be hashed
   color: '',
   terms: false,
 });

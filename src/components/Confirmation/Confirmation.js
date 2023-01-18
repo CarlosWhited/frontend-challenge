@@ -7,7 +7,7 @@ import {
   ListItemText,
   Box,
   Button,
-  Container
+  Container,
 } from "@mui/material";
 import { useNavigate } from 'react-router-dom';
 import PropTypes from 'prop-types';
@@ -32,30 +32,31 @@ const Confirmation = (props) => {
     <form onSubmit={handleSubmit(onSubmit)}>
       <Box
         component="form"
-        noValidate
-        autoComplete="off"
       >
-        <List>
-          <ListItem disablePadding>
-            <ListItemText primary={`First Name: ${state.name}`} />
-          </ListItem>
-          <Divider />
-          <ListItem disablePadding>
-            <ListItemText primary={`Email: ${state.email}`} />
-          </ListItem>
-          <Divider />
-          <ListItem disablePadding>
-            <ListItemText primary={`Password: ******`} />
-          </ListItem>
-          <Divider />
-          <ListItem disablePadding>
-            <ListItemText primary={`Favorite Color: ${state.color}`} />
-          </ListItem>
-          <Divider />
-          <ListItem disablePadding>
-            <ListItemText primary={`Terms and Conditions: ${state.terms ? 'Agreed' : 'Not Agreed'}`} />
-          </ListItem>
-        </List>
+        <Container sx={{padding: 2, width: 95/100}}>
+          <List>
+            <ListItem disablePadding>
+              <ListItemText primary={`First Name: ${state.name}`} />
+            </ListItem>
+            <Divider />
+            <ListItem disablePadding>
+              <ListItemText primary={`Email: ${state.email}`} />
+            </ListItem>
+            <Divider />
+            <ListItem disablePadding>
+              {/* Masking password with simple string */}
+              <ListItemText primary={`Password: ******`} />
+            </ListItem>
+            <Divider />
+            <ListItem disablePadding>
+              <ListItemText primary={`Favorite Color: ${state.color}`} />
+            </ListItem>
+            <Divider />
+            <ListItem disablePadding>
+              <ListItemText primary={`Terms and Conditions: ${state.terms ? 'Agreed' : 'Not Agreed'}`} />
+            </ListItem>
+          </List>
+        </Container>
 
         <Container>
           <Button variant="contained" color="success" onClick={navBack} sx={{ mr: 1, ml: 2 }}>

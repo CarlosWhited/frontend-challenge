@@ -1,8 +1,12 @@
 import useAxios from "axios-hooks";
 import { useNavigate } from 'react-router-dom';
+import { 
+  Box,
+  CircularProgress,
+} from "@mui/material";
 import Component from "../components/Confirmation";
 
-// TODO: pull API server url from node env
+const SUBMIT_ENDPOINT = 'http://localhost:3001/api/submit'
 
 const Confirmation = () => {
   const navigate = useNavigate();
@@ -11,7 +15,7 @@ const Confirmation = () => {
     submitForm
   ] = useAxios(
     {
-      url: 'http://localhost:3001/api/submit',
+      url: SUBMIT_ENDPOINT,
       method: 'POST'
     },
     { manual: true }
@@ -29,8 +33,15 @@ const Confirmation = () => {
     }
   }
 
-  if (loading) return <p>Loading...</p>
-  if (error) return <p>Error!</p>
+  if (loading) {
+    return <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+      <CircularProgress />
+    </Box>;
+  }
+
+  if (error) {
+    navigate('../error');
+  }
 
   return (
     <Component submit={submit} />

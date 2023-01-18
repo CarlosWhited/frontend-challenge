@@ -21,15 +21,19 @@ const Success = () => {
   return (
     <>
       <PageHeader title="Success!"/>
-      <Container sx={{ margin: 2 }}>
+      <Container>
         <CheckCircleIcon fontSize="large" color="success" />
-        <Typography variant="body1">
+      </Container>
+      <Container>
+        <Typography variant="body1" align='center'>
           You should receive a confirmation email soon.
         </Typography>
       </Container>
-      <Button variant="contained" color="success" onClick={restartFlow}>
-        Restart
-      </Button>
+      <Container sx={{ paddingTop: 4 }}>
+        <Button variant="contained" color="success" onClick={restartFlow}>
+          Restart
+        </Button>
+      </Container>
     </>
   );
 };

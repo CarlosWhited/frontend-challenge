@@ -35,8 +35,6 @@ const MoreInfo = (props) => {
   const { actions, state } = useStateMachine({ update });
   const navigate = useNavigate();
 
-  console.log(state);
-  console.log(errors);
   const onSubmit = data => {
     actions.update(data);
     navigate("../confirmation");
@@ -51,7 +49,7 @@ const MoreInfo = (props) => {
   );
 
   const renderTermsLink = () => <>
-    <span>I agree to the <a href="https://www.google.com" target="_blank">terms and conditions</a></span>
+    <span>I agree to the <a href="https://xkcd.com/1998/" target="_blank">terms and conditions</a></span>
   </>;
 
   const renderHelperText = (errorMessage) => { 
@@ -69,14 +67,14 @@ const MoreInfo = (props) => {
       >
         <Container>
           <FormControl 
-            sx={{ width: 1, margin: 2 }}
+            sx={{ width: 1, mt: 2, mb: 1 }}
             error={!!errors.color}
             aria-invalid={errors.color ? 'true' : 'false'}
           >
-            <InputLabel id="demo-simple-select-label">Select your favorite color</InputLabel>
+            <InputLabel id="color-select-label">Select your favorite color</InputLabel>
             <Select
-              labelId="demo-simple-select-label"
-              id="demo-simple-select"
+              labelId="color-select-label"
+              id="color-select"
               label="What is your favorite color?"
               defaultValue={state.color}
               {...register("color")}
@@ -88,7 +86,7 @@ const MoreInfo = (props) => {
         </Container>
         <Container>
           <FormGroup 
-            sx={{ width: 1, margin: 2 }}
+            sx={{ width: 1, mt: 1, mb: 2 }}
             error={errors.terms ? true : undefined}
             aria-invalid={errors.terms ? 'true' : 'false'}
           >
@@ -98,7 +96,7 @@ const MoreInfo = (props) => {
         </Container>
 
         <Container>
-          <Button variant="contained" color="success" onClick={navBack} sx={{ mr: 1, ml: 2 }}>
+          <Button variant="contained" color="success" onClick={navBack} sx={{ mr: 1 }}>
             Back
           </Button>
           <Button variant="contained" color="success" type="submit" sx={{ ml: 1 }}>

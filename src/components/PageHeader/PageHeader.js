@@ -7,9 +7,7 @@ const PageHeader = (props) => {
   const { title } = props;
 
   return (
-    <Box sx={{ 
-      padding: 2,
-     }}>
+    <Box sx={{ pb: 2, pt: 4 }}>
       <Typography align="center" variant="h5" fontWeight={'bold'}>{title}</Typography>
     </Box>
   );

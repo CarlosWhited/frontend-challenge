@@ -1,14 +1,26 @@
 import useAxios from 'axios-hooks'
+import { useNavigate } from 'react-router-dom';
+import { 
+  Box,
+  CircularProgress,
+} from "@mui/material";
 import Component from "../components/MoreInfo";
-// TODO: pull API server url from node env
+
+const GET_COLORS_ENDPOINT = 'http://localhost:3001/api/colors'
 
 const MoreInfo = () => {
-  const [{ data, loading, error }] = useAxios(
-    'http://localhost:3001/api/colors'
-  )
+  const navigate = useNavigate();
+  const [{ data, loading, error }] = useAxios(GET_COLORS_ENDPOINT)
 
-  if (loading) return <p>Loading...</p>
-  if (error) return <p>Error!</p>
+  if (loading) {
+    return <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+      <CircularProgress />
+    </Box>;
+  }
+
+  if (error) {
+    navigate('../error');
+  }
 
   console.log(data);
   return (

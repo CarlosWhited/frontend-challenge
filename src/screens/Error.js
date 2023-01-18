@@ -22,15 +22,19 @@ const Error = () => {
   return (
     <>
       <PageHeader title="Error"/>
-      <Container sx={{ margin: 2 }}>
+      <Container>
         <CancelIcon fontSize="large" sx={{ color: red[500] }}/>
-        <Typography variant="body1">
+      </Container>
+      <Container>
+        <Typography variant="body1" align='center'>
           Uh oh, something went wrong. Please try again later.
         </Typography>
       </Container>
-      <Button variant="contained" color="success" onClick={restartFlow}>
-        Restart
-      </Button>
+      <Container sx={{ paddingTop: 4 }}>
+        <Button variant="contained" color="success" onClick={restartFlow}>
+          Restart
+        </Button>
+      </Container>
     </>
   );
 };
