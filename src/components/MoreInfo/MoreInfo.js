@@ -4,6 +4,7 @@ import {
   FormGroup,
   FormControl,
   FormControlLabel,
+  FormHelperText,
   Checkbox,
   Box,
   InputLabel,
@@ -14,7 +15,14 @@ import {
 } from "@mui/material";
 import { useNavigate } from 'react-router-dom';
 import PropTypes from 'prop-types';
+import * as yup from "yup";
 import { update} from "../../actions/SignUpFlow";
+import useYupValidationResolver from "../../hooks/useYupValidationResolver";
+
+const validationSchema = yup.object({
+  color: yup.string().required("Required"),
+  terms: yup.bool().oneOf([true], 'Terms and conditions must be agreed'),
+});
 
 const propTypes = {
   colors: PropTypes.arrayOf(PropTypes.string).isRequired,
@@ -22,10 +30,13 @@ const propTypes = {
 
 const MoreInfo = (props) => {
   const { colors } = props;
-  const { register, handleSubmit } = useForm();
+  const resolver = useYupValidationResolver(validationSchema);
+  const { register, handleSubmit, formState: { errors } } = useForm({ resolver });
   const { actions, state } = useStateMachine({ update });
   const navigate = useNavigate();
 
+  console.log(state);
+  console.log(errors);
   const onSubmit = data => {
     actions.update(data);
     navigate("../confirmation");
@@ -43,30 +54,46 @@ const MoreInfo = (props) => {
     <span>I agree to the <a href="https://www.google.com" target="_blank">terms and conditions</a></span>
   </>;
 
+  const renderHelperText = (errorMessage) => { 
+    const helperText = errorMessage ? <FormHelperText id="component-helper-text" error>
+      {errorMessage}
+    </FormHelperText> : null;
+
+    return helperText;
+  };
+
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
       <Box
         component="form"
-        noValidate
-        autoComplete="off"
       >
         <Container>
-          <FormControl sx={{ width: 1, margin: 2 }}>
+          <FormControl 
+            sx={{ width: 1, margin: 2 }}
+            error={!!errors.color}
+            aria-invalid={errors.color ? 'true' : 'false'}
+          >
             <InputLabel id="demo-simple-select-label">Select your favorite color</InputLabel>
             <Select
               labelId="demo-simple-select-label"
               id="demo-simple-select"
               label="What is your favorite color?"
-              // value={state.color}
+              defaultValue={state.color}
               {...register("color")}
             >
               {renderColorSelect()}
             </Select>
+            {renderHelperText(errors.color?.message)}
           </FormControl>
         </Container>
         <Container>
-          <FormGroup sx={{ width: 1, margin: 2 }}>
+          <FormGroup 
+            sx={{ width: 1, margin: 2 }}
+            error={errors.terms ? true : undefined}
+            aria-invalid={errors.terms ? 'true' : 'false'}
+          >
             <FormControlLabel control={<Checkbox {...register("terms")} />} label={renderTermsLink()} />
+            {renderHelperText(errors.terms?.message)}
           </FormGroup>
         </Container>
 

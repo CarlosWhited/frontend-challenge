@@ -6,6 +6,7 @@
     "@emotion/react": "^11.10.5",
     "@emotion/styled": "^11.10.5",
     "@fontsource/roboto": "^4.5.8",
+    "@mui/icons-material": "^5.11.0",
     "@mui/material": "^5.11.4",
     "axios": "^1.2.2",
     "axios-hooks": "^4.0.0",
@@ -19,7 +20,8 @@
     "react-hook-form": "^7.41.5",
     "react-router-dom": "^6.6.2",
     "react-scripts": "5.0.0",
-    "supertest": "^4.0.2"
+    "supertest": "^4.0.2",
+    "yup": "^0.32.11"
   },
   "scripts": {
     "start:mocks": "node server/index.js",
